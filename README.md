@@ -91,6 +91,23 @@ rm 3bf863cc.pub
 ```bash
 sudo apt-get update
 ```
+##### 如果问题仍然存在，可能需要重新安装CUDA仓库：
+```bash
+# 先删除现有仓库
+sudo rm /etc/apt/sources.list.d/cuda-ubuntu2004-11-8-local.list
+
+# 重新添加仓库
+sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /"
+sudo apt-get update
+```
+##### 如果仍然失败，可以手动下载并添加密钥：
+```bash
+wget -qO - https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub | sudo apt-key add -
+```
+##### 或者直接跳过密钥验证（不推荐，仅作为最后手段）：
+```bash
+sudo apt-get update --allow-unauthenticated
+```
 
 ### 设置环境变量(添加到~/.bashrc)：
 ```bash
